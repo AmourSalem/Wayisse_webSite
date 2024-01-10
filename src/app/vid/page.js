@@ -1,4 +1,4 @@
-import MyPlayer from "@/contents/VideoPlayingPage"
+import VideoForm from "@/contents/Backoffice/VideoForm"
 
 export const metadata = {
   title: 'Vidéos - Wayisse',
@@ -7,6 +7,6 @@ export const metadata = {
 
 export default function Cont() {
   return (
-      <MyPlayer />
+      <VideoForm />
   )
 }

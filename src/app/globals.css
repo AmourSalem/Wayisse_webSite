@@ -80,3 +80,42 @@ html, body {
   font-weight: bold; 
   color: #ff9f00; 
 }
+
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+table tr {
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+	margin-bottom: .625em;
+
+}
+table th {
+  font-size: .85em;
+  text-transform: uppercase;
+}
+
+
+@media screen and (max-width: 639px) {
+	table { border: 0; }
+	table thead { display: none; }
+	table tr {
+		border-bottom: 3px solid #ddd;
+		display: block;
+		margin-bottom: .625em;
+	}
+	table td {
+		display: block;
+		font-size: .8em;
+		text-align: center;
+		padding: .5em;
+	}
+
+	table td:last-child { border-bottom: 0; }
+	}

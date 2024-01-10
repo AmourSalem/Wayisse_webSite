@@ -17,7 +17,11 @@ const request = async (path, method, data = null) => {
   };
 
   if (data) {
-    options.body = JSON.stringify(data);
+    if (data instanceof FormData) {
+      options.body = data;
+    } else {
+      options.body = JSON.stringify(data);
+    }
   }
 
   try {
