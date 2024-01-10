@@ -4,18 +4,44 @@ import { writeFile, access } from "fs/promises";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
+
+  // Fonction pour vérifier si une vidéo existe déjà
+async function videoExist(title, description) {
+  const existingVideo = await Video.findOne({ title, description });
+  return !!existingVideo;
+}
   try {
     await connectToDatabase();
 
     const data = await request.formData();
 
     let title = data.get("title");
+    const description = data.get("description");
+
+    // Vérifier si la vidéo existe déjà
+    if (await videoExist(title, description)) {
+      throw new Error(`Une vidéo avec le titre "${title}" et la description "${description}" existe déjà.`);
+    }
 
     const image = data.get("image");
     const video = data.get("video");
 
+    const allowedImageMimeTypes = ["image/jpeg", "image/jpg", "image/png"];
+    const allowedVideoMimeTypes = ["video/mp4"];
+
+    function validateMimeType(file, allowedMimeTypes) {
+      if (!allowedMimeTypes.includes(file.type)) {
+        throw new Error(`Type MIME non autorisé pour ${file.name}`);
+      }
+    }
+
     const imageMimeType = image.type;
     const videoMimeType = video.type;
+
+    console.log(imageMimeType, videoMimeType)
+
+    validateMimeType(image, allowedImageMimeTypes);
+    validateMimeType(video, allowedVideoMimeTypes);
 
     const imageExtension = getImageExtension(imageMimeType);
     const videoExtension = getVideoExtension(videoMimeType);
@@ -44,7 +70,7 @@ export async function POST(request) {
 
     const newVideo = await Video.create({
       title: title,
-      description: data.get("description"),
+      description: description,
       category: data.get("category"),
       image: `/uploads/Images/${imageFileName}`,
       video: `/uploads/Videos/${videoFileName}`,
@@ -71,6 +97,7 @@ function getImageExtension(mimeType) {
   const imageMimeTypes = {
     "image/jpeg": ".jpeg",
     "image/jpg": ".jpg",
+    "image/png": ".png",
   };
 
   return imageMimeTypes[mimeType];
@@ -84,6 +111,8 @@ function getVideoExtension(mimeType) {
 
   return videoMimeTypes[mimeType];
 }
+
+
 
 // Fonction pour vérifier si un fichier existe
 async function fileExists(path) {
@@ -99,6 +128,9 @@ async function fileExists(path) {
 async function replaceFile(path, data) {
   await writeFile(path, data);
 }
+
+
+
 
 
 export async function GET (request) {

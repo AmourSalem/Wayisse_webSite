@@ -1,3 +1,4 @@
+"use client"
 // Importez les modules nécessaires
 import React from 'react';
 import { Form, FormField, FormMessage } from '@/components/ui/form';

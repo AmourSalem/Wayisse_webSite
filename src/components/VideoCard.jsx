@@ -7,7 +7,7 @@ const VideoCard = ({video}) => {
   return (
       <div >
         <div>
-          <Link href={`/videos/${video._id}`}>
+          <Link href={`/videos/watch=/${video._id}`}>
             <Card className="my-6 w-full">
                 <div>
                   <img className='w-full h-[150px] rounded-lg cover' style={{objectFit:'cover'}} src={video.image} />
