@@ -8,7 +8,7 @@ import Contact from "../../../../schemas/message.model";
   try {
     await connectToDatabase();
     const contacts = await Contact.find();
-    return NextResponse.json({contacts}, { status: 200 });
+    return NextResponse.json(contacts, { status: 200 });
   } catch (error) {
     return NextResponse("Erreur d'envoi " + error, { status: 500 });
   }

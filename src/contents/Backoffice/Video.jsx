@@ -140,131 +140,137 @@ const Video = () => {
   return (
     <>
       <div className='py-20 px-10 md:px-[10em]'>
-        <div className="flex items-center justify-between mb-6">
-          <div className="search flex-shrink-0 w-2/3 md:w-1/2 xl:w-1/3 relative">
-            <Input className="mb-0 py-6 pr-10" placeholder="Rechercher" />
-            <Search size={"1.6rem"} color="gray" className="absolute top-0 right-2 translate-y-1/2" />
-          </div>
-          <div className='space-y-2 flex justify-center'>
-            <AlertDialog open={isAlertOpen}>
-              <AlertDialogTrigger asChild>
-                <Button className="px-[.7em]" onClick={handleAlertOpen}>
-                  <PlusIcon />
-                </Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent className='rounded-lg w-[80%]'>
-                <AlertDialogHeader>
-                  <AlertDialogTitle className='font-bold text-2xl mb-3'>
-                    Poster une nouvelle vidéo
-                  </AlertDialogTitle>
-                  <AlertDialogDescription>
-                    <Form {...form}>
-                      <form onSubmit={form.handleSubmit(onSubmit)} encType="multipart/form-data" className='w-full space-y-6'>
-                        <FormField
-                          control={form.control}
-                          name='title'
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormControl>
-                                <Input type='text' placeholder='Titre de la vidéo' {...field} />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name='description'
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormControl>
-                                <Textarea className='bg-neutral-100' placeholder='Ajoutez une description' {...field} />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name='image'
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormControl>
-                                <Input type='file' placeholder='Choisissez une image' {...field} accept='image/*' />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name='video'
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormControl>
-                                <Input type='file' placeholder='Choisissez une vidéo' {...field} accept='video/*' />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name='category'
-                          render={({ field }) => (
-                            <FormItem>
-                              <Select onValueChange={field.onChange} defaultValue={field.value}>
+      <h5 className="my-6 scroll-m-20 text-5xl font-bold tracking-tight">
+          Vidéos 
+        </h5>
+        <div className='p-10 rounded-xl shadow-lg bg-[white]'>
+          <div className="flex items-center justify-between mb-6">
+            <div className="search flex-shrink-0 w-2/3 md:w-1/2 xl:w-1/3 relative">
+              <Input className="mb-0 py-6 pr-10" placeholder="Rechercher" />
+              <Search size={"1.6rem"} color="gray" className="absolute top-0 right-2 translate-y-1/2" />
+            </div>
+            <div className='space-y-2 flex justify-center'>
+              <AlertDialog open={isAlertOpen}>
+                <AlertDialogTrigger asChild>
+                  <Button className="px-[.7em]" onClick={handleAlertOpen}>
+                    <PlusIcon />
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent className='rounded-lg w-[80%]'>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle className='font-bold text-2xl mb-3'>
+                      Poster une nouvelle vidéo
+                    </AlertDialogTitle>
+                    <AlertDialogDescription>
+                      <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} encType="multipart/form-data" className='w-full space-y-6'>
+                          <FormField
+                            control={form.control}
+                            name='title'
+                            render={({ field }) => (
+                              <FormItem>
                                 <FormControl>
-                                  <SelectTrigger>
-                                    <SelectValue placeholder='Sélectionner une catégorie' />
-                                  </SelectTrigger>
+                                  <Input type='text' placeholder='Titre de la vidéo' {...field} />
                                 </FormControl>
-                                <SelectContent>
-                                  <SelectItem value='evangelisation'>Evangélisation</SelectItem>
-                                  <SelectItem value='dot'>Dot</SelectItem>
-                                  <SelectItem value='wedding'>Mariage</SelectItem>
-                                  <SelectItem value='annif'>Anniversaire</SelectItem>
-                                  <SelectItem value='child'>Sortie d'enfant</SelectItem>
-                                  <SelectItem value='others'>Autres</SelectItem>
-                                </SelectContent>
-                              </Select>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        <Button type="submit" className="w-full">Soumettre</Button>
-                        <Button type="reset" onClick={() => handleAlertClose()} className="w-full border-lg border-primary " variant={'outline'}>Annuler</Button>
-                      </form>
-                    </Form>
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-              </AlertDialogContent>
-            </AlertDialog>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name='description'
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormControl>
+                                  <Textarea className='bg-neutral-100' placeholder='Ajoutez une description' {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name='image'
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormControl>
+                                  <Input type='file' placeholder='Choisissez une image' {...field} accept='image/*' />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name='video'
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormControl>
+                                  <Input type='file' placeholder='Choisissez une vidéo' {...field} accept='video/*' />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name='category'
+                            render={({ field }) => (
+                              <FormItem>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder='Sélectionner une catégorie' />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value='evangelisation'>Evangélisation</SelectItem>
+                                    <SelectItem value='dot'>Dot</SelectItem>
+                                    <SelectItem value='wedding'>Mariage</SelectItem>
+                                    <SelectItem value='annif'>Anniversaire</SelectItem>
+                                    <SelectItem value='child'>Sortie d'enfant</SelectItem>
+                                    <SelectItem value='others'>Autres</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <Button type="submit" className="w-full">Soumettre</Button>
+                          <Button type="reset" onClick={() => handleAlertClose()} className="w-full border-lg border-primary " variant={'outline'}>Annuler</Button>
+                        </form>
+                      </Form>
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                </AlertDialogContent>
+              </AlertDialog>
+            </div>
           </div>
+          <table className="min-w-full">
+            <thead className="border-b">
+              <tr>
+                <th scope="col" className="text-sm font-medium text-gray-900 px-1 py-3 text-left">
+                  #
+                </th>
+                <th scope="col" className="text-sm font-medium text-gray-900 px-1 py-3 text-left">
+                  Titre
+                </th>
+                <th scope="col" className="text-sm font-medium text-gray-900 px-1 py-3 text-left">
+                  Catégorie
+                </th>
+                <th scope="col" className="text-sm font-medium text-gray-900 px-1 py-3 text-left">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody className='space-y-4'>
+              {videos.map((video, index) => (
+                <VideoRow key={video._id} video={video} index={index + 1} editVideo={() => editVideo(video)} removeVideo={() => removeVideo(video)} />
+              ))}
+            </tbody>
+          </table>
         </div>
-        <table className="min-w-full">
-          <thead className="border-b">
-            <tr>
-              <th scope="col" className="text-sm font-medium text-gray-900 px-1 py-3 text-left">
-                #
-              </th>
-              <th scope="col" className="text-sm font-medium text-gray-900 px-1 py-3 text-left">
-                Titre
-              </th>
-              <th scope="col" className="text-sm font-medium text-gray-900 px-1 py-3 text-left">
-                Catégorie
-              </th>
-              <th scope="col" className="text-sm font-medium text-gray-900 px-1 py-3 text-left">
-                Action
-              </th>
-            </tr>
-          </thead>
-          <tbody className='space-y-4'>
-            {videos.map((video, index) => (
-              <VideoRow key={video._id} video={video} index={index + 1} editVideo={() => editVideo(video)} removeVideo={() => removeVideo(video)} />
-            ))}
-          </tbody>
-        </table>
+
       </div>
     </>
   );

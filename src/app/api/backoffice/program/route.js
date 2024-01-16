@@ -17,17 +17,17 @@ export async function GET (request) {
 
 
 export async function POST (request) {
-  const {title, description} = await request.json()
+  const {title, description, responsable, deadline, status} = await request.json()
 
 
   try {
     await connectToDatabase();
-    const program = await Program.create({title, description})
+    const program = await Program.create({title, description, responsable, deadline, status})
 
-    return NextResponse.json({message: "Programme créé", program}, {status: 201})
+    return NextResponse.json(program, {status: 201})
 
   } catch (error) { 
-    return NextResponse("Erreur d'envoi " + error, { status: 500 });
+    return NextResponse("Erreur d'envoi " + error.message, { status: 500 });
   }
 
 };

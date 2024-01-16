@@ -3,7 +3,6 @@ import './globals.css'
 import Headers from '@/layouts/public/Headers'
 import Footer from '@/layouts/public/Footer'
 import { usePathname } from 'next/navigation'
-import Sidebar from '@/layouts/private/Sidebar'
 import Header from '@/layouts/private/Header'
 
 
@@ -17,7 +16,7 @@ export default function RootLayout({ children }) {
 if(isPrivatePage) {
   return(
     <html lang="en">
-      <body>
+      <body style={{fontFamily:'Montserrat,sans-serif '} } className='bg-[#80808014]'>
         <Header />
         {children}
       </body>
@@ -26,7 +25,7 @@ if(isPrivatePage) {
 }
   return (
     <html lang="en">
-      <body>
+    <body style={{fontFamily:'Montserrat,sans-serif'}}>
         <Headers />
         {children}
         <Footer />

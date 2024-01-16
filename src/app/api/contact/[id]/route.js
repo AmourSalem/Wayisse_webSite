@@ -17,6 +17,23 @@ export async function PUT (request, {params}) {
  }
 }
 
+export async function DELETE (request, {params}) {
+  const { id } = params;
+
+  try {
+    if(id) {
+      await connectToDatabase();
+      await Contact.findByIdAndDelete(id)
+      return NextResponse.json({message: "Programme suprimé"}, {status: 201})
+    }
+
+  } catch (error) {
+    return NextResponse("Erreur d'envoi " + error, { status: 500 });
+
+  }
+  
+}
+
 
 export async function GET (request, {params}) {
   const { id } = params;
