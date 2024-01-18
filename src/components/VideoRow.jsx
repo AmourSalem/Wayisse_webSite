@@ -1,13 +1,14 @@
 import Link from 'next/link'
 import React from 'react'
+import { TableCell, TableRow } from './ui/table'
 
 const VideoRow = ({video, index, editVideo, removeVideo}) => {
   return (
-    <tr>
-      <td>{index}</td>
-      <td>{ video.title }</td>
-      <td>{ getCategory(video.category) }</td>
-      <td>
+    <TableRow>
+      <TableCell>{index}</TableCell>
+      <TableCell>{ video.title }</TableCell>
+      <TableCell>{ getCategory(video.category) }</TableCell>
+      <TableCell>
         <div className="flex justify-center md:justify-between items-center">
           <div className="flex items-center">
             <div className="flex">
@@ -27,8 +28,8 @@ const VideoRow = ({video, index, editVideo, removeVideo}) => {
             </div>
           </div>
         </div>
-      </td>
-    </tr>
+      </TableCell>
+    </TableRow>
   )
 }
 

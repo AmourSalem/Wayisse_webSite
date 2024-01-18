@@ -96,20 +96,44 @@ table td {
 }
 
 
-@media screen and (max-width: 639px) {
-	table { border: 0; }
-	table thead { display: none; }
-	table tr {
-		border-bottom: 3px solid #ddd;
-		display: block;
-		margin-bottom: .625em;
-	}
-	table td {
-		display: block;
-		font-size: .8em;
-		text-align: center;
-		padding: .5em;
-	}
 
-	table td:last-child { border-bottom: 0; }
-	}
+@media screen and (max-width: 639px) {
+  table {
+    border: 0;
+  }
+  table thead {
+    display: none;
+  }
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  table td {
+    display: block;
+    font-size: .8em;
+    text-align: center;
+    padding: .5em;
+  }
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+table.noResponsive {
+  border-collapse: collapse;
+}
+
+table.noResponsive tr {
+  display: table-row; 
+  border-bottom: initial; 
+  margin-bottom: initial; 
+}
+
+table.noResponsive td {
+  display: table-cell; 
+  font-size: 1em; 
+  text-align: left; 
+  padding: .75em; 
+}
+

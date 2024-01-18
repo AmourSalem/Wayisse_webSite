@@ -13,6 +13,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 const FileSchema = z.object({
   data: z.unknown(),
@@ -144,11 +145,11 @@ const Video = () => {
           Vidéos 
         </h5>
         <div className='p-10 rounded-xl shadow-lg bg-[white]'>
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-end mb-10">{/* 
             <div className="search flex-shrink-0 w-2/3 md:w-1/2 xl:w-1/3 relative">
               <Input className="mb-0 py-6 pr-10" placeholder="Rechercher" />
               <Search size={"1.6rem"} color="gray" className="absolute top-0 right-2 translate-y-1/2" />
-            </div>
+            </div> */}
             <div className='space-y-2 flex justify-center'>
               <AlertDialog open={isAlertOpen}>
                 <AlertDialogTrigger asChild>
@@ -246,7 +247,23 @@ const Video = () => {
               </AlertDialog>
             </div>
           </div>
-          <table className="min-w-full">
+          <Table className="min-w-full">
+            <TableHeader className="border-b ">
+              <TableRow>
+                <TableHead className="text-sm text-gray-900 font-bold">#</TableHead>
+                <TableHead className="text-sm text-gray-900 font-bold">Titre</TableHead>
+                <TableHead className="text-sm text-gray-900 font-bold">Catégorie</TableHead>
+                <TableHead className="text-sm text-gray-900 font-bold">Action</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody className='space-y-4'>
+              {videos.map((video, index) => (
+                <VideoRow key={video._id} video={video} index={index + 1} editVideo={() => editVideo(video)} removeVideo={() => removeVideo(video)} />
+              ))}
+            </TableBody>
+          </Table>
+
+       {/*    <table className="min-w-full">
             <thead className="border-b">
               <tr>
                 <th scope="col" className="text-sm font-medium text-gray-900 px-1 py-3 text-left">
@@ -268,7 +285,7 @@ const Video = () => {
                 <VideoRow key={video._id} video={video} index={index + 1} editVideo={() => editVideo(video)} removeVideo={() => removeVideo(video)} />
               ))}
             </tbody>
-          </table>
+          </table> */}
         </div>
 
       </div>

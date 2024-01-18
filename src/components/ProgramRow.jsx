@@ -2,6 +2,7 @@ import Link from "next/link";
 import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "./ui/alert-dialog";
 import { useState } from "react";
 import { Button } from "./ui/button";
+import { TableCell, TableRow } from "./ui/table";
 
 function getBackgroundColor (status) {
   switch (status) {
@@ -29,16 +30,16 @@ export default function ProgramRow ({ program, removeProgram, openStatusModal, e
   };
 
   return (    
-  <tr className="py-10">
-    <td>{index}</td>
-    <td>{ program.title }</td>
-    <td>{ program.deadline }</td>
-    <td>
+  <TableRow className="py-10">
+    <TableCell >{index}</TableCell >
+    <TableCell >{ program.title }</TableCell >
+    <TableCell >{ program.deadline }</TableCell >
+    <TableCell >
       <Button variant="outline" onClick={() => openStatusModal(program)} className={`${getBackgroundColor(program.status)} border-primary py-2 px-4 w-[7em] rounded-md`}>
         {program.status}
       </Button>
-    </td>
-    <td>
+    </TableCell >
+    <TableCell >
       <div className="flex justify-center md:justify-between items-center">
         <div className="flex items-center">
           <div className="flex">
@@ -54,7 +55,8 @@ export default function ProgramRow ({ program, removeProgram, openStatusModal, e
                   Programme
                 </AlertDialogTitle>
                 <AlertDialogDescription>
-                  <table  className="py-5" style={{border:'!none'}}>
+                  
+                  <table   className="py-5 noResponsive" style={{border:'!none'}}>
                     <tbody className="px-3">
                       <tr>
                         <td className="px-3">Titre</td>
@@ -102,8 +104,8 @@ export default function ProgramRow ({ program, removeProgram, openStatusModal, e
           </div>
         </div>
       </div>
-    </td>
-  </tr>
+    </TableCell >
+  </TableRow>
   );
 };
 

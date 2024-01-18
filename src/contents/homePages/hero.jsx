@@ -13,7 +13,7 @@ const Hero = () => {
         <div className='py-4'>
           <Link href='/contact'>
             <Button>
-              Nous c
+              Nous contacter
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" className='ml-2' viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m22 2l-7 20l-4-9l-9-4Zm0 0L11 13"/></svg>
             </Button>
           </Link>

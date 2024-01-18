@@ -2,6 +2,7 @@ import Link from "next/link";
 import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "./ui/alert-dialog";
 import { useState } from "react";
 import { Button } from "./ui/button";
+import { TableCell, TableRow } from "./ui/table";
 
 export default function ContactRow ({ contact, removeContact, index }) {
 
@@ -16,11 +17,11 @@ export default function ContactRow ({ contact, removeContact, index }) {
   };
 
   return (    
-  <tr className="py-10">
-    <td>{index}</td>
-    <td>{ contact.fullName }</td>
-    <td>{ contact.email }</td>
-    <td>
+  <TableRow className="py-10">
+    <TableCell>{index}</TableCell>
+    <TableCell>{ contact.fullName }</TableCell>
+    <TableCell>{ contact.email }</TableCell>
+    <TableCell>
       <div className="flex justify-center md:justify-between items-center">
         <div className="flex items-center">
           <div className="flex space-x-3 items-center">
@@ -36,7 +37,7 @@ export default function ContactRow ({ contact, removeContact, index }) {
                     Contact
                   </AlertDialogTitle>
                   <AlertDialogDescription>
-                    <table  className="py-5" style={{border:'!none'}}>
+                    <table  className="py-5 noResponsive" style={{border:'!none'}}>
                       <tbody className="px-3">
                         <tr>
                           <td className="px-3">Envoyé par :</td>
@@ -79,8 +80,8 @@ export default function ContactRow ({ contact, removeContact, index }) {
           </div>
         </div>
       </div>
-    </td>
-  </tr>
+    </TableCell>
+  </TableRow>
   );
 };
 
