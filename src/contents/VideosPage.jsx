@@ -48,7 +48,7 @@ const VideosPage = () => {
         <h1 style={{ lineHeight: "1.05em" }} className='md:text-5xl text-center text-3xl py-6 font-bold'>Nos activités et prestations en vidéos</h1>
         <p className='text-2xl text-center py-4'>Retrouvez, ici, en vidéos, des séquences de nos séances de performance et de prestations</p>
         <Tabs defaultValue="all" className="w-full">
-          <TabsList className="grid w-full md:grid-cols-6 grid-cols-2">
+          <TabsList className="grid w-full md:grid-cols-6 my-5 grid-cols-2">
             <TabsTrigger value="all" onClick={() => handleFilterClick("all")}>Tout</TabsTrigger>
             <TabsTrigger value="evangelisation" onClick={() => handleFilterClick("evangelisation")}>Evangélisation</TabsTrigger>
             <TabsTrigger value="dot" onClick={() => handleFilterClick("dot")}>Dot</TabsTrigger>

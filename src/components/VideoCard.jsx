@@ -8,7 +8,7 @@ const VideoCard = ({video}) => {
       <div >
         <div>
           <Link href={`/videos/watch=/${video._id}`}>
-            <Card className="my-6 w-full">
+            <Card className=" w-full">
                 <div>
                   <img className='w-full h-[150px] rounded-lg cover' style={{objectFit:'cover'}} src={video.image} />
                 </div>
